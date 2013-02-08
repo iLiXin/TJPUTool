@@ -41,6 +41,11 @@ public class GradeResult extends ListActivity{
 		
 		List<HashMap<String, String>> list = new ArrayList<HashMap<String,String>>();
 		
+		HashMap<String, String> title = new HashMap<String, String>();
+		title.put("course", "¿Î³ÌÃû");
+		title.put("grade", "                ³É¼¨");
+		list.add(title);
+		
 		for(int i=1;i<gradeArray.length;i++){
 			
 			String test = filterHtml(gradeArray[i]);

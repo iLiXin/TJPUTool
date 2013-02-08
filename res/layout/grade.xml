@@ -7,9 +7,12 @@
     
     <Button android:id="@+id/bxqcjcx" android:layout_width="fill_parent"
             android:layout_height="wrap_content" android:text="@string/bxqcjcx"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
              />
     
     <Button android:id="@+id/bxqkb" android:layout_width="fill_parent"
-            android:layout_height="wrap_content" android:text="@string/bxqkb" />
+            android:layout_height="wrap_content" android:text="@string/bxqkb"
+            android:textSize="20dp" />
 	
 </LinearLayout>

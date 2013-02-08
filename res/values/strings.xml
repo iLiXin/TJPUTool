@@ -6,7 +6,7 @@
     <string name="username">请输入学号</string>
     <string name="password">请输入密码</string>
     <string name="login">登录</string>
-    <string name="bxqcjcx">本学期成绩查询</string>
+    <string name="bxqcjcx">本学期成绩</string>
     <string name="bxqkb">本学期课表</string>
     <string name="sorry">此功能尚未开放，敬请期待！</string>
     <string name="about">关于</string>

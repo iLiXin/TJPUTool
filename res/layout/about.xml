@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
     
+    <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        
+        android:text="这货不是我!"
+        android:textSize="20dp"
+        android:textColor="#eeeeee"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="50dp" />
+    
+    <ImageView 
+           android:id="@+id/iv"
+           android:layout_width="wrap_content" 
+           android:layout_height="wrap_content"
+           android:layout_marginTop="100dp"
+           android:layout_centerHorizontal="true"
+           android:src="@drawable/code_monkey"
+           
+          />
     
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_below="@id/iv"
         android:text="闲来无事,顺便练手.没有审美,界面我自己都觉着丑,好在功能还能凑合用."/>
     
 
-</LinearLayout>
+</RelativeLayout>
