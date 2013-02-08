@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   android:layout_width="fill_parent" 
+   android:layout_height="fill_parent"
+   android:orientation="vertical"
+   android:background="#DDDDDD">
+<!-- 导航栏开始 -->
+   <RelativeLayout android:id="@+id/Relativelayout01"
+       android:background="@drawable/repeat_bg"
+      android:layout_width="fill_parent" 
+      android:layout_height="40dp">
+      
+      <!-- 左的Logo，在父控件中居左  android:layout_centerInParent=true  -->
+      <ImageView android:id="@+id/b" 
+          android:layout_width="40dp" 
+          android:layout_height="40dp"
+          android:layout_marginLeft="1dp"
+          android:layout_alignParentLeft="true"
+           android:src="@drawable/tjpu"
+          />
+        <!-- 登入按钮  在父控件中居右 android:layout_alignParentRight="true"-->
+            <ImageButton android:id="@+id/loginButton"
+        android:layout_width="50dp" 
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/login"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="2dp"
+        />
+   </RelativeLayout>
+<!-- 导航栏结束 -->
+
+<!-- 立即登入的图片 -->
+ <LinearLayout
+   android:layout_width="wrap_content" 
+   android:layout_height="wrap_content"
+   android:orientation="vertical">
+       
+       <ImageView android:id="@+id/b" 
+          android:layout_width="wrap_content" 
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true" 
+           android:src="@drawable/logtext"
+           android:layout_marginLeft="10dp"
+           android:layout_marginTop="8dp"
+          />
+</LinearLayout>
+<!-- 登陆框主体开始 -->
+   <RelativeLayout android:id="@+id/Relativelayout02"
+       android:background="@drawable/login_bg"
+      android:layout_width="fill_parent" 
+      android:layout_height="90dp"
+      android:layout_marginTop="5dp"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp"
+      >
+       <!-- 登陆帐号的文本提示，设置的是对齐父控件的左边缘 ,android:layout_alignParentLeft="true"-->
+<TextView android:id="@+id/LoginIDx"
+      android:layout_width="wrap_content" 
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="10dp"
+      android:layout_marginTop="12dp"
+      android:layout_alignParentLeft="true"
+      android:text="学号"
+      />
+<!-- 登陆帐号的输入框，设置的位置是放在 登陆帐号的文本提示这个控件的右边,android:layout_toRightOf="@id/LoginIDx"-->
+       <EditText 
+           android:id="@+id/username" 
+           android:layout_width="240dp"
+           android:layout_height="40dp" 
+           android:background="@null"
+           android:layout_marginLeft="10dp"
+           android:textColor="#b9b9b9"
+           android:textSize="14dp"
+           android:paddingTop="3dp"
+           android:layout_toRightOf="@id/LoginIDx"
+           />
+<!-- 登陆密码的文本提示，设置的是放在登陆帐号文本提示的下面， android:layout_below="@id/LoginIDx"-->       
+<TextView android:id="@+id/PassWordx"
+      android:layout_width="wrap_content" 
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="10dp"
+      android:layout_alignParentLeft="true"
+      android:text="密码"
+      android:layout_marginTop="25dp"
+      android:layout_below="@id/LoginIDx"
+      />
+<!-- 登陆密码的输入框，设置的位置是放在 登陆密码的文本提示这个控件的右边,android:layout_toRightOf="@id/PassWordx"-->
+       <EditText 
+           android:id="@+id/password" 
+           android:layout_width="240dp"
+           android:layout_height="40dp"
+           android:layout_below="@id/username"
+           android:background="@null"
+           android:layout_marginLeft="10dp"
+           android:textColor="#b9b9b9"
+           android:textSize="14dp"
+           android:paddingTop="5dp"
+           android:layout_toRightOf="@id/PassWordx"
+           android:password="true"
+           />
+       </RelativeLayout>
+  <!-- 登陆框主体结果 -->
+  
+  <!-- 登陆框下面的贴心小提醒区域开始 -->
+  <RelativeLayout
+      android:id="@+id/LinearLayout02" 
+   android:layout_width="wrap_content" 
+   android:layout_height="wrap_content"
+
+      android:layout_marginTop="5dp"
+      android:layout_marginLeft="8dp"
+    >
+         <!-- 贴心小提醒旁边的感叹号图片，设置的是对齐父控件的左边缘，android:layout_alignParentLeft="true"-->
+       <ImageView 
+           android:id="@+id/tipsimg"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:src="@drawable/tips"
+           android:layout_alignParentLeft="true"
+           android:layout_marginTop="5dp"
+           />
+       <!--贴心小提醒的文字控件 ，设置的是放在感叹号图片的右边 ,android:layout_toRightOf="@id/tipsimg"-->
+       <TextView
+           android:id="@+id/Tips1"
+           android:text="贴心小提醒"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="#4f4f4f"
+           android:textSize="15dp"
+           android:layout_marginLeft="5dp"
+           android:layout_marginTop="5dp"
+           android:layout_toRightOf="@id/tipsimg"
+           />
+       <!-- 文本提示内容1,设置的是放在感叹号图片的下面，android:layout_below="@id/tipsimg" -->
+       <TextView
+           android:id="@+id/Tipstxt1"
+           android:text="1. 此版本为民间版本"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="#4f4f4f"
+           android:textSize="12dp"
+           android:layout_marginLeft="5dp"
+           android:layout_below="@id/tipsimg"
+           android:layout_marginTop="10dp"
+           />
+       <!-- 文本提示内容2， 设置的是放在文本提示内容1的下面，android:layout_below="@id/Tipstxt1"-->
+       <TextView
+           android:id="@+id/Tipstxt2"
+           android:text="2.如有问题或建议请联系作者  @贝加尔湖的最深处"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="#4f4f4f"
+           android:textSize="12dp"
+           android:layout_marginLeft="5dp"
+           android:layout_below="@id/Tipstxt1"
+           android:layout_marginTop="5dp"
+           />
+       
+</RelativeLayout>
+  <!-- 登陆框下面的贴心小提醒区域结束 -->
+</LinearLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, TjpuActivity!</string>
+    <string name="app_name">天津工业大学</string>
+    <string name="username">请输入学号</string>
+    <string name="password">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="bxqcjcx">本学期成绩查询</string>
+    <string name="bxqkb">本学期课表</string>
+    <string name="sorry">此功能尚未开放，敬请期待！</string>
+    <string name="about">关于</string>
+    <string name="exit">退出</string>
+    <string name="tushuguan">图书馆系统过几天就会开放了,到时候这个功能就会补上.</string>
+    <string name="xuanke">这个功能我也很想做啊,可是学校根本没有webService,一个接口都不对外提供让我也没办法开发客户端.本来还可以模拟web的方式然后客户端处理数据,可是这系统不是常年开放,自己解析数据都没法进行(幸好现在查分还能用).所以只能等它的系统开放了.</string>
+    
+
+</resources>
