@@ -29,7 +29,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/iv"
-        android:text="闲来无事,顺便练手.没有审美,界面我自己都觉着丑,好在功能还能凑合用."/>
+        android:text="闲来无事,顺便练手.本人UI美化能力有限，其实我自己都觉着这界面丑，凑合用吧。."/>
     
 
 </RelativeLayout>

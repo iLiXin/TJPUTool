@@ -14,5 +14,9 @@
     <Button android:id="@+id/bxqkb" android:layout_width="fill_parent"
             android:layout_height="wrap_content" android:text="@string/bxqkb"
             android:textSize="20dp" />
+    
+    <Button android:id="@+id/xlcx" android:layout_width="fill_parent"
+            android:layout_height="wrap_content" android:text="@string/xlcx"
+            android:textSize="20dp" />
 	
 </LinearLayout>

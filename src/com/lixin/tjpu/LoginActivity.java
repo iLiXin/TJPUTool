@@ -18,12 +18,15 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -32,6 +35,7 @@ public class LoginActivity extends Activity{
 	private EditText username;
 	private EditText password;
 	private ImageButton loginButton;
+	private TextView textView;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,11 @@ public class LoginActivity extends Activity{
 		
 		username = (EditText) findViewById(R.id.username);
 		password = (EditText) findViewById(R.id.password);
+		textView = (TextView) findViewById(R.id.Tipstxt2);
+		
+		textView.setText(Html.fromHtml("2.如有问题或建议请联系作者 "+"<a href=\"http://weibo.com/328858558\">@贝加尔湖的最深处</a>"));
+		textView.setMovementMethod(LinkMovementMethod.getInstance());
+		
 		loginButton = (ImageButton) findViewById(R.id.loginButton);
 		loginButton.setOnClickListener(new LoginListener());
 		
