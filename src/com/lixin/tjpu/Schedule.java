@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.http.client.CookieStore;
 import org.apache.http.cookie.Cookie;
 
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.CookieManager;
@@ -47,6 +49,15 @@ public class Schedule extends Activity{
 		});
 		webView.loadUrl(url);
 		
+	}
+	
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onResume(this);
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
 	}
 	
 }

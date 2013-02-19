@@ -12,9 +12,13 @@ import org.apache.http.impl.client.AbstractHttpClient;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.util.EntityUtils;
 
+import com.umeng.analytics.MobclickAgent;
+import com.umeng.update.UmengUpdateAgent;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -24,6 +28,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -36,6 +41,8 @@ public class LoginActivity extends Activity{
 	private EditText password;
 	private ImageButton loginButton;
 	private TextView textView;
+
+	private SharedPreferences sp;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +54,23 @@ public class LoginActivity extends Activity{
 		password = (EditText) findViewById(R.id.password);
 		textView = (TextView) findViewById(R.id.Tipstxt2);
 		
+		sp = getSharedPreferences("UserInfo", 0);
+		username.setText(sp.getString("username", null));
+		password.setText(sp.getString("password", null));
+		
+		
 		textView.setText(Html.fromHtml("2.如有问题或建议请联系作者 "+"<a href=\"http://weibo.com/328858558\">@贝加尔湖的最深处</a>"));
 		textView.setMovementMethod(LinkMovementMethod.getInstance());
 		
+
+		
+		
 		loginButton = (ImageButton) findViewById(R.id.loginButton);
 		loginButton.setOnClickListener(new LoginListener());
+		
+		UmengUpdateAgent.setUpdateOnlyWifi(false);
+		UmengUpdateAgent.update(this);
+		
 		
 		/*loginButton.setOnTouchListener(new OnTouchListener() {
 			
@@ -71,19 +90,17 @@ public class LoginActivity extends Activity{
 
 		
 	}
-	//判断网路可用状态
-	public static final boolean networkIsAvailable(final Context context) {
-		NetworkInfo info = ((ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE))
-				.getActiveNetworkInfo();
-		return (null != info && info.isAvailable());
-	}
+	
 	
 	class LoginListener implements OnClickListener{
 
 		@Override
 		public void onClick(View v) {
 			
-			
+			if(!isNetworkAvailable(LoginActivity.this)){
+				showToast(LoginActivity.this, "宝贝，别闹！没网用不了", 2000);
+			}
+			else{
 			
 			String uname = username.getText().toString();
 			String upwd = password.getText().toString();
@@ -107,6 +124,13 @@ public class LoginActivity extends Activity{
 			    
 			if(result.contains("学分制综合教务")){
 			
+				//保存用户名密码
+				sp = getSharedPreferences("UserInfo", Context.MODE_WORLD_WRITEABLE
+			          | Context.MODE_WORLD_READABLE);
+				sp.edit().putString("username",
+				        username.getText().toString()).commit();
+				sp.edit().putString("password",
+				        password.getText().toString()).commit();
 			
 			//保存cookie
 			CookieStore cookies = ((AbstractHttpClient)httpClient).getCookieStore();
@@ -135,4 +159,47 @@ public class LoginActivity extends Activity{
 		}
 		
 	}
+	}
+	
+	public static boolean isNetworkAvailable(Context context) {   
+        ConnectivityManager connectivity = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);   
+        if (connectivity == null) {   
+            return false;   
+        } else {   
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();   
+            if (info != null) {   
+                for (int i = 0; i < info.length; i++) {   
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {   
+                        return true;   
+                    }   
+                }   
+            }   
+        }   
+        return false;   
+    }
+	
+	
+	//toast频率
+    private static Toast mToast = null;  
+    public static void showToast(Context context, String text, int duration) {  
+        if (mToast == null) {  
+            mToast = Toast.makeText(context, text, duration);  
+        } else {  
+            mToast.setText(text);  
+            mToast.setDuration(duration);  
+        }  
+  
+        mToast.show();  
+    } 
+	
+    
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onResume(this);
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
+	
 }

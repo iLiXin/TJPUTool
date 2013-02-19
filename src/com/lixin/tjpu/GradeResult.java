@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -112,7 +114,14 @@ public class GradeResult extends ListActivity{
 		}
 	
 	
-	
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onResume(this);
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
 	
 	
 	

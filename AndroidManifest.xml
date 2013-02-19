@@ -5,13 +5,18 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="7" />
-
-	
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:name=".MyApp"
         android:icon="@drawable/tjpu"
         android:label="@string/app_name" >
+        
+        <meta-data android:value="51174b5f5270154057000039" android:name="UMENG_APPKEY"></meta-data>
         
         <activity
             android:name=".WelcomeActivity"
@@ -33,6 +38,15 @@
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".Schedule"></activity>
         <activity android:name=".AboutActivity"></activity>
+        <activity android:name=".BookItems"></activity>
+        <activity android:name=".BookDetail"></activity>
+        
+        <service
+   			 android:name="com.umeng.common.net.DownloadingService"
+  			 android:exported="true"
+   			 android:process=":DownloadingService" >
+		</service>
+        
         
     </application>
 	<uses-permission android:name="android.permission.INTERNET" /> 

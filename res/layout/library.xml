@@ -5,14 +5,21 @@
     android:orientation="vertical" >
 
     <TextView
+        android:id="@+id/libra"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/sorry" />
+        android:text="@string/keys" />
     
-    <TextView
+    <EditText 
+        android:id="@+id/search"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/tushuguan"
-        android:layout_marginTop="30dp" />
+        />
+    
+    <Button 
+        android:id="@+id/searchButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="查询"/>
  
 </LinearLayout>

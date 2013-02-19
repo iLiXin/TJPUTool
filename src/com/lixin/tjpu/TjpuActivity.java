@@ -1,5 +1,7 @@
 package com.lixin.tjpu;
 
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -69,5 +71,13 @@ public class TjpuActivity extends TabActivity{
 		tabHost.addTab(librarySpec);
 	}
 	
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onResume(this);
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
 	
 }

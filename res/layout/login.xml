@@ -120,6 +120,8 @@
            android:layout_alignParentLeft="true"
            android:layout_marginTop="5dp"
            />
+     
+       
        <!--贴心小提醒的文字控件 ，设置的是放在感叹号图片的右边 ,android:layout_toRightOf="@id/tipsimg"-->
        <TextView
            android:id="@+id/Tips1"

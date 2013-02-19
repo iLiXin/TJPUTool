@@ -1,6 +1,8 @@
 package com.lixin.tjpu;
 
 
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,4 +41,14 @@ public class WelcomeActivity extends Activity{
            }, 5000);   
 	}
 
+	public void onResume() {
+	    super.onResume();
+	    MobclickAgent.onResume(this);
+	}
+	public void onPause() {
+	    super.onPause();
+	    MobclickAgent.onPause(this);
+	}
+	
+	
 }
