@@ -23,8 +23,14 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+	
+
 public class BookItems extends ListActivity{
 
+	
+
+	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -34,8 +40,16 @@ public class BookItems extends ListActivity{
                 new String[]{"title","year","author","status"},
                 new int[]{R.id.title,R.id.year,R.id.author,R.id.status});
         setListAdapter(adapter);
+        
+        ListView listView = new ListView(this);
+        View emptyView = findViewById(R.id.empty);
+        listView.setEmptyView(emptyView);
 		
 	}
+	
+	
+	
+	
 	
 	
 	

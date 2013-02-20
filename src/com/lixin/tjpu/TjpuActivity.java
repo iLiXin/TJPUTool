@@ -1,5 +1,7 @@
 package com.lixin.tjpu;
 
+import net.youmi.android.AdView;
+
 import com.umeng.analytics.MobclickAgent;
 
 import android.app.TabActivity;
@@ -8,6 +10,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 import android.widget.TabHost;
 
 public class TjpuActivity extends TabActivity{
@@ -69,6 +73,14 @@ public class TjpuActivity extends TabActivity{
 		librarySpec.setIndicator("Õº Èπ›", res.getDrawable(R.drawable.library));
 		librarySpec.setContent(library);
 		tabHost.addTab(librarySpec);
+		
+		//π„∏Ê
+		LinearLayout adViewLayout = (LinearLayout) findViewById(R.id.adViewLayout);
+		adViewLayout.addView(new AdView(this), 
+		        new LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+		
+		
+		
 	}
 	
 	public void onResume() {

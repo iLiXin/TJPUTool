@@ -9,7 +9,20 @@
     
     <ListView 
         android:id="@id/android:list"
+        
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"/>
+    
+    <TextView
+
+        android:id="@+id/empty"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:padding="15dip"
+        android:text="@string/text_no_book"
+        android:textSize="22sp"
+        android:visibility="gone" />
 
 </LinearLayout>

@@ -2,6 +2,11 @@ package com.lixin.tjpu;
 
 
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import com.umeng.analytics.MobclickAgent;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -39,33 +44,87 @@ public class BookDetail extends Activity{
 		
 		Intent intent = getIntent();
 		String detail = intent.getStringExtra("detail");
-		String[] cut = detail.split(" <!-- Print the title, if one exists -->");
-		String test[] = cut[1].split("<([^>]*)>");
-		System.out.println("``````````````"+test.length);
+		String[] cut = detail.split("<!-- Print the title, if one exists -->");
 		
-		String title = test[1];
-		String author = test[4];
-		String status = test[22];
-		String number = test[57];
-		String type = test[61];
-		String loc = test[63];
-		String isbn = test[104];
-		String chubanshe = test[112];
-		String yema = test[115];
-		String jianjie = test[182];
+		int titleStatr = cut[1].indexOf("<strong>");
+		int titleEnd = cut[1].indexOf("</strong>");
+		String title = cut[1].substring(titleStatr+8, titleEnd);
 		
-		titleV.setText(title);
-		authorV.setText(author.substring(28, author.length()));
-		statusV.setText(status.substring(0, status.length()));
-		numberV.setText(number.substring(0, number.length()));
-		typeV.setText(type.substring(0, type.length()));
-		locV.setText(loc.substring(0, loc.length()));
-		isbnV.setText(isbn.substring(0, isbn.length()));
-		chubansheV.setText(chubanshe.substring(0, chubanshe.length()));
-		yemaV.setText(yema.substring(0, yema.length()));
-		jianjieV.setText(jianjie.substring(0, jianjie.length()));
+		int authorStart = cut[1].indexOf("<!-- Print the author, if one exists -->");
+		int authorEnd = cut[1].indexOf("<!-- show the following div if there is a summary put in it -->");
+		String author = cut[1].substring(authorStart, authorEnd);
+		
+		int statusStart = cut[1].indexOf("<!-- show if catalog or call-num item view -->");
+		int statusEnd = cut[1].indexOf("<!-- check for the existence of MARC Holdings data -->");
+		String status = cut[1].substring(statusStart, statusEnd);
+		
+		int numStart = cut[1].indexOf("<!-- Start new callnum -->");
+		int numEnd = cut[1].indexOf("<!-- Boundwith holdings -->");
+		String number = cut[1].substring(numStart, numEnd);
+		
+		int isbnStart = cut[1].indexOf("<!-- Print ISBN number, if exists -->");
+		int isbnEnd = cut[1].indexOf("<!--list_of_available/holdings -->");
+		
+		System.out.println(isbnStart+"--------"+isbnEnd);
+		String isbn = cut[1].substring(isbnStart, isbnEnd);
+		
+//		String chubanshe = test[112];
+//		String yema = test[115];
+//		String jianjie = test[182];
+		
+		titleV.setText(filterHtml(title).replace("\n", ""));
+		authorV.setText(filterHtml(author).replace("\n", "").replace("&nbsp;", ""));
+		statusV.setText(filterHtml(status).replace("\n", "").replace("&nbsp", "").replace(" ", ""));
+		String[] ntl = number.split("<([^>]*)>");
+		
+		numberV.setText(ntl[2].replace("\n", ""));
+		typeV.setText(ntl[6].replace("\n", ""));
+		locV.setText(ntl[8].replace("\n", ""));
+		isbnV.setText(filterHtml(isbn).replace("\n", ""));
+//		chubansheV.setText(chubanshe);
+//		yemaV.setText(yema);
+//		jianjieV.setText(jianjie);
 	}
 	
 	
+	//¹ýÂËhtml±êÇ©
+	public static String filterHtml(String str) {
+
+		Pattern pattern = Pattern.compile( "<([^>]*)>");
+
+		Matcher matcher = pattern.matcher(str);
+
+		StringBuffer sb = new StringBuffer();
+
+		boolean result1 = matcher.find();
+
+		while (result1) {
+
+			matcher.appendReplacement(sb, "");
+
+			result1 = matcher.find();
+
+		}
+
+		matcher.appendTail(sb);
+
+		return sb.toString();
+
+		}
+	
+	
+	
+	
+	
+	
+	public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
+
+    }
 	
 }

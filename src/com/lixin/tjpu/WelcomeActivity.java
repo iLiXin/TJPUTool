@@ -1,6 +1,8 @@
 package com.lixin.tjpu;
 
 
+import net.youmi.android.AdManager;
+
 import com.umeng.analytics.MobclickAgent;
 
 import android.app.Activity;
@@ -18,7 +20,8 @@ public class WelcomeActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		
-		
+		//广告初始化
+		AdManager.init(this, "fd554d51bcecf998", "0ed2164f8aa11bc4", 30, false);
 		
 		
 		
