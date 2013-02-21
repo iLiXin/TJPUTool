@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-
 import org.apache.http.HttpResponse;
 import org.apache.http.ParseException;
 import org.apache.http.client.ClientProtocolException;
@@ -23,17 +22,14 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-	
+	/**	  书籍列表页面  	*/
 
 public class BookItems extends ListActivity{
 
 	
-
-	
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.library_result);
 		SimpleAdapter adapter = new SimpleAdapter(this,getData(),R.layout.book_items,
@@ -41,17 +37,14 @@ public class BookItems extends ListActivity{
                 new int[]{R.id.title,R.id.year,R.id.author,R.id.status});
         setListAdapter(adapter);
         
+        //设置数据为空时的emptyView
         ListView listView = new ListView(this);
         View emptyView = findViewById(R.id.empty);
         listView.setEmptyView(emptyView);
 		
 	}
 	
-	
-	
-	
-	
-	
+	//对数据进行封装，为Adapter提供数据
 	
 	private List<HashMap<String, String>> getData(){
 	
@@ -68,75 +61,63 @@ public class BookItems extends ListActivity{
 	    
 	    for(int i=1;i<items.length;i++){
 	    
-	    	
 		    HashMap<String, String> map = new HashMap<String, String>();
 		    //划分各属性
 		    String[] item = items[i].split("<strong>");
 		    
 		    if(item.length>=3){
 		    	
-		    int yearIndex =  item[1].indexOf("</strong>");
+		    	int yearIndex =  item[1].indexOf("</strong>");
 		    
+		    	//获取年份
+		 	    String year = item[1].substring(0, yearIndex);
 		    
-		    
-		    //获取年份
-		    String year = item[1].substring(0, yearIndex);
-//		    System.out.println("year"+year+"year");
-		    
-		    //获取名称
-		    int nameIndex = item[2].indexOf("</strong>");
-		    String fullName =  item[2].substring(0, nameIndex);
-		    int realIndex = fullName.lastIndexOf(" ");
-		    String name = fullName.substring(0, realIndex);
-//		    System.out.println("name" + name+"name");
-		    
-		    //获取作者
-		    int authorIndex = item[2].indexOf("</label>");
-		    String author = item[2].substring(nameIndex+55, authorIndex-9);
-//		    System.out.println("author"+author+"author");
-		    
-		    //获取状态
-		    int statusIndex0 = item[2].indexOf("<p>");
-		    int statusIndex1 = item[2].indexOf("</p>");
-		    String status = item[2].substring(statusIndex0+19, statusIndex1-21);
-//		    System.out.println("status"+status+"status");
-		    
-		    map.put("title", name);
-		    map.put("year", year);
-		    map.put("author", author);
-		    map.put("status", status);
-		    
-		    list.add(map);
-		    }
+		 	   //获取名称
+			    int nameIndex = item[2].indexOf("</strong>");
+			    String fullName =  item[2].substring(0, nameIndex);
+			    int realIndex = fullName.lastIndexOf(" ");
+			    String name = fullName.substring(0, realIndex);
+			    
+			    //获取作者
+			    int authorIndex = item[2].indexOf("</label>");
+			    String author = item[2].substring(nameIndex+55, authorIndex-9);
+			    
+			    //获取状态
+			    int statusIndex0 = item[2].indexOf("<p>");
+			    int statusIndex1 = item[2].indexOf("</p>");
+			    String status = item[2].substring(statusIndex0+19, statusIndex1-21);
+			    
+			    map.put("title", name);
+			    map.put("year", year);
+			    map.put("author", author);
+			    map.put("status", status);
+			    
+			    list.add(map);
+			    }
 	    }
-		return list;
+	    
+	    return list;
 	    		
         }catch (Exception e) {
-		// TODO: handle exception
+        	
         	return list;
         }
 	
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	//onListItemClick方法
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-		// TODO Auto-generated method stub
+		
 		super.onListItemClick(l, v, position, id);
 		System.out.println("点击了"+id);
 		
 		Intent intent = getIntent();
 		String temp = intent.getStringExtra("result");
+		
+		//生成带session的URL,传入对应参数
 		String tempUrl = temp.substring(temp.length()-56, temp.length());
 		String finalUrl = tempUrl + "/9?first_hit=1&last_hit=20&form_type=&VIEW%5E" + (id+1) + "=%C8%AB%B2%BF%CF%B8%BD%DA";
 		System.out.println(finalUrl);
@@ -146,6 +127,7 @@ public class BookItems extends ListActivity{
 		HttpGet getMethod = new HttpGet(finalUrl); 
 		
 		try {
+			
 			HttpResponse response = httpClient.execute(getMethod); //发起GET请求  
 			
 			int resCode = response.getStatusLine().getStatusCode(); //获取响应码  
@@ -153,7 +135,6 @@ public class BookItems extends ListActivity{
 			String result = EntityUtils.toString(response.getEntity(), "GBK");//获取服务器响应内容 
 			
 			System.out.println(resCode);
-//			System.out.println(result);
 			
 			Intent intent1 = new Intent();
 			intent1.putExtra("detail", result);
@@ -161,25 +142,23 @@ public class BookItems extends ListActivity{
 			BookItems.this.startActivity(intent1);
 			
 		} catch (ClientProtocolException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
+			
 		}
-		
-		
 		
 	}
 
-
 	
-	
-	
-	
+	//后台统计
 
 	public void onResume() {
         super.onResume();

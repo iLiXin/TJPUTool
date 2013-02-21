@@ -1,9 +1,9 @@
 package com.lixin.tjpu;
 
+/** 程序主界面 ，显示广告*/
+
 import net.youmi.android.AdView;
-
 import com.umeng.analytics.MobclickAgent;
-
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -17,18 +17,18 @@ import android.widget.TabHost;
 public class TjpuActivity extends TabActivity{
 
 	
+	//添加菜单
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// TODO Auto-generated method stub
+		
     	menu.add(0, 0, 1, R.string.about);
     	menu.add(0, 1, 2, com.lixin.tjpu.R.string.exit);
 		return super.onCreateOptionsMenu(menu);
 	}
 	
+	//菜单响应事件
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// TODO Auto-generated method stub
-		System.out.println("ItemId"+item.getItemId());
 		
 		if(item.getItemId()==0){
 			Intent intent = new Intent();
@@ -50,6 +50,7 @@ public class TjpuActivity extends TabActivity{
 		
 		setContentView(R.layout.main);
 		
+		//生成主界面的3个子页面
 		TabHost tabHost = getTabHost();
 		
 		Intent grade = new Intent();
@@ -79,10 +80,10 @@ public class TjpuActivity extends TabActivity{
 		adViewLayout.addView(new AdView(this), 
 		        new LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 		
-		
-		
 	}
 	
+	
+	//后台统计
 	public void onResume() {
 	    super.onResume();
 	    MobclickAgent.onResume(this);

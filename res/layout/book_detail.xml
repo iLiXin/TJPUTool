@@ -7,7 +7,7 @@
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-      	android:text="名称"
+      	android:text="@string/bookName"
          />
     <TextView 
         android:id="@+id/bookTitle"
@@ -18,7 +18,7 @@
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-      	android:text="作者"
+      	android:text="@string/bookAuthor"
          />
     <TextView 
         android:id="@+id/bookAuthor"
@@ -29,7 +29,7 @@
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-      	android:text="状态"
+      	android:text="@string/bookStatus"
          />
     <TextView 
         android:id="@+id/bookStatus"
@@ -40,7 +40,7 @@
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-      	android:text="编号"
+      	android:text="@string/bookNum"
          />
     <TextView 
         android:id="@+id/bookNumber"
@@ -51,7 +51,7 @@
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-      	android:text="文献类型"
+      	android:text="@string/bookType"
       	/>
     <TextView 
         android:id="@+id/bookType"
@@ -62,7 +62,7 @@
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-      	android:text="馆藏位置"
+      	android:text="@string/bookLoc"
       	/>
     <TextView 
         android:id="@+id/bookLoc"
@@ -73,7 +73,7 @@
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-      	android:text="ISBN"
+      	android:text="@string/bookIsbn"
       	/>
     <TextView 
         android:id="@+id/bookIsbn"
@@ -84,7 +84,7 @@
     <TextView 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-      	android:text="出版社"
+      	android:text="@string/bookC"
       	/>
     <TextView 
         android:id="@+id/bookChubanshe"
@@ -92,28 +92,7 @@
         android:layout_height="wrap_content"
         android:textColor="#FFff99"
          />
-    <TextView 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-      	android:text="页码"
-      	/>
-    <TextView 
-        android:id="@+id/bookYema"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#FFff99"
-         />
-    <TextView 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-      	android:text="简介"
-      	/>
-    <TextView 
-        android:id="@+id/bookJianjie"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#FFff99"
-         />
+    
     
    
     

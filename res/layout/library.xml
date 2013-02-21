@@ -21,6 +21,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textSize="20dp"
-        android:text="查询"/>
+        android:text="@string/search"/>
  
 </LinearLayout>

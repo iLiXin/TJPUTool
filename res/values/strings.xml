@@ -10,12 +10,23 @@
     <string name="bxqkb">本学期课表</string>
     <string name="xlcx">校历查询</string>
     <string name="sorry">此功能尚未开放，敬请期待！</string>
+    <string name="test">测试</string>
     <string name="about">关于</string>
     <string name="exit">退出</string>
+    <string name="search">查询</string>
     <string name="Tipstxt1">1. 此版本为民间版本</string>
     <string name="Tips1">贴心小提醒</string>
     <string name="keys">请输入关键字</string>
     <string name="text_no_book">没有结果，请重试</string>
+    <string name="bookName">名称</string>
+    <string name="bookAuthor">作者</string>
+    <string name="bookStatus">状态</string>
+    <string name="bookNum">编号</string>
+    <string name="bookType">文献类型</string>
+    <string name="bookLoc">馆藏位置</string>
+    <string name="bookIsbn">ISBN</string>
+    <string name="bookC">出版社</string>
+    
     
 
 </resources>

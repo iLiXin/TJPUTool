@@ -1,12 +1,11 @@
 package com.lixin.tjpu;
 
-import java.util.List;
+/** 课表详情页面*/
 
+import java.util.List;
 import org.apache.http.client.CookieStore;
 import org.apache.http.cookie.Cookie;
-
 import com.umeng.analytics.MobclickAgent;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.CookieManager;
@@ -19,11 +18,12 @@ public class Schedule extends Activity{
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.schedule);
 		String url = "http://jwpt.tjpu.edu.cn:8081/xkAction.do?actionType=6";
 		
+		//取得cookies并加入请求中
 		CookieSyncManager.createInstance(this);
 		CookieManager cookieManager = CookieManager.getInstance();
 		MyApp myCookie = (MyApp) getApplication();
@@ -39,6 +39,7 @@ public class Schedule extends Activity{
 			CookieSyncManager.getInstance().sync();
 		}
 		
+		//直接显示网页
 		WebView webView = (WebView) findViewById(R.id.webView);
 //		webView.getSettings().setJavaScriptEnabled(true); 
 		webView.setWebViewClient(new WebViewClient(){
@@ -51,6 +52,8 @@ public class Schedule extends Activity{
 		
 	}
 	
+	
+	//后台统计
 	public void onResume() {
 	    super.onResume();
 	    MobclickAgent.onResume(this);

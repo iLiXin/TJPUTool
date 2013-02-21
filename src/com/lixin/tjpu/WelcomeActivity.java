@@ -1,10 +1,8 @@
 package com.lixin.tjpu;
 
-
+/** 欢迎界面 */
 import net.youmi.android.AdManager;
-
 import com.umeng.analytics.MobclickAgent;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,16 +15,16 @@ public class WelcomeActivity extends Activity{
 	private ImageView image;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		
 		//广告初始化
 		AdManager.init(this, "fd554d51bcecf998", "0ed2164f8aa11bc4", 30, false);
 		
-		
-		
 		setContentView(R.layout.welcome);
 	    image=(ImageView)findViewById(R.id.image);  
+	    
+	    //欢迎图片的动画效果
         AnimationSet  animationset=new AnimationSet(true);  
         AlphaAnimation alphaAnimation=new AlphaAnimation(0, 1);  
         alphaAnimation.setDuration(4000);  
@@ -44,6 +42,8 @@ public class WelcomeActivity extends Activity{
            }, 5000);   
 	}
 
+	
+	//后台统计
 	public void onResume() {
 	    super.onResume();
 	    MobclickAgent.onResume(this);
